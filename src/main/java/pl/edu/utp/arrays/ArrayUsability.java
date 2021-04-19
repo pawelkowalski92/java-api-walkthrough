@@ -1,5 +1,7 @@
 package pl.edu.utp.arrays;
 
+import java.util.Arrays;
+
 public class ArrayUsability {
 
     public static void main(String[] args) {
@@ -11,6 +13,8 @@ public class ArrayUsability {
         fancyReverseWhileLoop(args);
         System.out.println("---");
         iterateWithDoWhileLoop(args);
+        System.out.println("---");
+        iterateWithEnhancedForLoop(args);
 
         System.out.println();
         System.out.println("Checking args with while loop");
@@ -22,12 +26,39 @@ public class ArrayUsability {
         */
         //how pre and post incrementation works?
         displayPreAndPostIncrementation();
+
+        // modifying arrays
+        String myArg = "ala ma kota";
+        args[1] = myArg;
+
+        System.out.println();
+        System.out.println("Checking args with for loop");
+        iterateWithEnhancedForLoop(args);
+
+        //can we expand array?
+        /*
+        args[4] = myArg;
+        no :(
+         */
+
+        System.out.println();
+        System.out.println("Let's make a bigger copy!");
+        String[] newArgs = Arrays.copyOf(args, 10);
+        newArgs[4] = myArg;
+        iterateWithEnhancedForLoop(newArgs);
     }
 
     public static void iterateWithForLoop(String[] args) {
         for (int i = 0; i < args.length; i++ /* i=i+1 */) {
             String arg = args[i];
             System.out.println("Arg nr: " + i + " = " + arg);
+        }
+    }
+
+    public static void iterateWithEnhancedForLoop(String[] args) {
+        int i = 0;
+        for (String arg : args) {
+            System.out.println("Arg nr: " + i++ + " = " + arg);
         }
     }
 
