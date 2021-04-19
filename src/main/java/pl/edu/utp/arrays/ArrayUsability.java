@@ -46,6 +46,14 @@ public class ArrayUsability {
         String[] newArgs = Arrays.copyOf(args, 10);
         newArgs[4] = myArg;
         iterateWithEnhancedForLoop(newArgs);
+
+        // let's continue modifications
+        System.out.println();
+        System.out.println("Capitalizing elements!");
+        capitalizeEveryElementWithOddIndex(args);
+        System.out.println();
+        System.out.println("Capitalizing elements with continue!");
+        capitalizeEveryElementWithOddIndexUsingContinue(args);
     }
 
     public static void iterateWithForLoop(String[] args) {
@@ -94,5 +102,26 @@ public class ArrayUsability {
         System.out.println(arg); //?4
     }
 
+    public static void capitalizeEveryElementWithOddIndex(String[] args) {
+        for (int i = 0; i < args.length; i++) {
+            if (i % 2 != 0) {
+                String arg = args[i];
+                args[i] = arg.toUpperCase();
+            }
+            System.out.println("Arg nr: " + i + " = " + args[i]);
+        }
+    }
+
+    public static void capitalizeEveryElementWithOddIndexUsingContinue(String[] args) {
+        for (int i = 0; i < args.length; i++) {
+            if (i % 2 == 0) {
+                // flow gets broken! we won't print the value for odd index
+                continue;
+            }
+            String arg = args[i];
+            args[i] = arg.toUpperCase();
+            System.out.println("Arg nr: " + i + " = " + args[i]);
+        }
+    }
 
 }
