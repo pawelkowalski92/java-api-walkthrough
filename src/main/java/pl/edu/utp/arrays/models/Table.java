@@ -18,5 +18,14 @@ public class Table {
         this(Material.WOOD);
     }
 
+    public double getWeight() {
+        String materialName = material.name();
+        double weight = 0;
+        for (char c : materialName.toCharArray()) {
+            weight += c;
+        }
+        return weight;
+    }
+
 
 }
