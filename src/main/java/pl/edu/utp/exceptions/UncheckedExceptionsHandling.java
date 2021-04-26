@@ -1,12 +1,15 @@
 package pl.edu.utp.exceptions;
 
-public class ExceptionsHandling {
+public class UncheckedExceptionsHandling {
 
     public static void main(String[] args) {
         System.out.println(readSafelyFromString("10"));
         System.out.println(readSafelyFromString("50.3"));
         System.out.println(readSafelyFromString("ala ma kota"));
         System.out.println(readSafelyFromString("40"));
+
+        System.out.println(readFromStringWithFinally("45"));
+        System.out.println(readFromStringWithFinally("test"));
     }
 
     // example of checked exception: NumberFormatException
@@ -31,6 +34,36 @@ public class ExceptionsHandling {
             System.out.println("Input parsed");
         }
     }
+
+    // different possibilities with try-catch-finally
+    public static int readFromStringWithFinally(String input) {
+        try {
+            return Integer.parseInt(input);
+        } finally {
+            System.out.println("Input parsed");
+        }
+    }
+
+    // different possibilities with try-catch-finally
+    public static int readSafelyFromStringWithSingleCatch(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (IllegalArgumentException ex) {
+            return -5;
+        }
+    }
+
+    /* different possibilities with try-catch-finally - they must be declared in proper order!
+    public static int invalidTryCatch(String input) {
+        try {
+            return Integer.parseInt(input);
+        } finally {
+            System.out.println("Input parsed");
+        } catch (IllegalArgumentException ex) {
+            return -5;
+        }
+    }
+     */
 
     /*
     catching the exception by generic type (polimorphism)
