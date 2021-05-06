@@ -9,22 +9,22 @@ import java.util.List;
 public class SortingExample {
 
     public static void main(String[] args) {
-        List<String> titles = new ArrayList<>();
+        List<Book> books = new ArrayList<>();
 
-        titles.add("Java for everyone");
-        titles.add("C++ for everyone");
-        titles.add("Typescript for advanced");
+        books.add(new Book("Java for everyone", 250));
+        books.add(new Book("C++ for everyone", 250));
+        books.add(new Book("Typescript for advanced", 400));
 
         System.out.println("Input order");
-        System.out.println(titles);
+        System.out.println(books);
 
-        Collections.sort(titles); // equivalent to titles.sort(null);
+        books.sort(null); // equivalent to Collections.sort(books);
         System.out.println("Natural order");
-        System.out.println(titles);
+        System.out.println(books);
 
-        Collections.reverse(titles);
+        Collections.reverse(books);
         System.out.println("Reversed order");
-        System.out.println(titles);
+        System.out.println(books);
     }
 
 }

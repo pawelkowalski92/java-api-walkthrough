@@ -2,7 +2,7 @@ package pl.edu.utp.collections.models;
 
 import java.util.Objects;
 
-public class Book {
+public class Book implements Comparable<Book> {
 
     private String title;
     private int pageCount;
@@ -16,12 +16,28 @@ public class Book {
         return title;
     }
 
+    /*
+    if returns negative:
+    {this}, {other}
+    if returns positive:
+    {other}, {this}
+    if returns 0:
+    {this} == {other} (treated as equals)
+     */
+    @Override
+    public int compareTo(Book other) {
+        int result = this.pageCount - other.pageCount;
+        if (result == 0) {
+            result = this.title.compareTo(other.title);
+        }
+        return result;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o instanceof Book) {
-            Book book = (Book) o;
-            return pageCount == book.pageCount && Objects.equals(title, book.title);
+            return compareTo((Book) o) == 0;
         }
         return false;
     }
@@ -35,4 +51,5 @@ public class Book {
     public String toString() {
         return "Book: " + getTitle();
     }
+
 }
