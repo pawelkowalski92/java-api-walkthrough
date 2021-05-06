@@ -1,30 +1,40 @@
 package pl.edu.utp.collections;
 
+import pl.edu.utp.collections.models.Book;
+
 import java.util.HashSet;
 import java.util.Set;
 
 public class SetExample {
 
     public static void main(String[] args) {
-        Set<String> titles = new HashSet<>();
+        Set<Book> books = new HashSet<>();
 
-        titles.add("Java for beginners");
-        titles.add("C++ for advanced programmers");
-        titles.add("Java for beginners");
+        books.add(new Book("Java for beginners", 100));
+        books.add(new Book("C++ for advanced programmers", 200));
+        books.add(new Book("Java for beginners", 100));
 
-        System.out.println(titles);
+        System.out.println(books);
 
-        titles.add("Typescript tutorial");
+        Book typescript = new Book("Typescript tutorial", 50);
 
-        System.out.println(titles);
-        listSetElements(titles);
+        books.add(typescript);
 
-        titles.remove("Typescript tutorial");
-        System.out.println(titles);
+        System.out.println(books);
+        listSetElements(books);
+
+        books.remove(new Book("Typescript tutorial", 50));
+        System.out.println(books);
+
+        books.remove(typescript);
+        System.out.println(books);
+
+        boolean hasJavaBook = books.contains(new Book("Java for beginners", 100));
+        System.out.println("Has Java book? " + hasJavaBook);
     }
 
-    public static void listSetElements(Set<String> set) {
-        for (String element : set) {
+    public static void listSetElements(Set<Book> set) {
+        for (Book element : set) {
             System.out.println(element);
         }
     }
