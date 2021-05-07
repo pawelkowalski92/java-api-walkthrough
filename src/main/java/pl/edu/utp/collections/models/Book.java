@@ -15,6 +15,9 @@ public class Book implements Comparable<Book> {
     public String getTitle() {
         return title;
     }
+    public int getPageCount() {
+        return pageCount;
+    }
 
     /*
     if returns negative:
@@ -49,7 +52,7 @@ public class Book implements Comparable<Book> {
 
     @Override
     public String toString() {
-        return "Book: " + getTitle();
+        return "Book: " + getTitle() + "[" + pageCount + "]";
     }
 
 }
