@@ -21,6 +21,10 @@ public class IOExample {
 
         MeasureUtils.measureAndGet(() -> safeSaveDataToFile("testPageContent.html", testPageContent),
                 duration -> System.out.println("Saving took: " + duration));
+
+        String lotsOfData = MeasureUtils.generateLotsOfData(500 * 1024 * 1024);
+        MeasureUtils.measureAndGet(() -> safeSaveDataToFile("lotsOfData.txt", lotsOfData),
+                duration -> System.out.println("Saving a lot of data took: " + duration));
     }
 
     public static String safeGetDataFromWebPage(String webPage) {
@@ -71,5 +75,6 @@ public class IOExample {
         return client.send(req, HttpResponse.BodyHandlers.ofString())
                 .body();
     }
+
 
 }
