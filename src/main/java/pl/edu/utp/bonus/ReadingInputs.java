@@ -8,6 +8,12 @@ public class ReadingInputs {
     private static final Scanner STD_IN = new Scanner(System.in);
 
     public static void main(String[] args) {
+        try {
+            clearConsole();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
         String name = readLine("What's your name? ");
         System.out.println("Hello, " + name + "!");
     }
@@ -33,6 +39,18 @@ public class ReadingInputs {
         System.out.print(prompt);
         // instead of creating scanner each time, we can create one static instance to save some CPU cycles
         return STD_IN.nextLine();
+    }
+
+    public static void clearConsole() throws Exception {
+        boolean isWindows = System.getProperty("os.name").startsWith("Windows");
+        String command = isWindows ? "cls" : "clear";
+        int exitCode = new ProcessBuilder(command)
+                .inheritIO()
+                .start()
+                .waitFor();
+        if (exitCode != 0) {
+            throw new IllegalStateException("Cannot clear console");
+        }
     }
 
 }
